@@ -1,0 +1,8 @@
+# Ignore nested repositories (keep them as independent repos)
+my-react-app/
+portfolio/
+server/node_modules/
+my-react-app/node_modules/
+# Build outputs
+dist/
+build/

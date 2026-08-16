@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grand Theatre — Ticket Booking</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-icon">🎭</span>
+        <div>
+          <h1>Grand Theatre</h1>
+          <p>City Center, Main Street</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="#shows" class="active">Now Showing</a>
+        <a href="#bookings">My Bookings</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ===== ERROR / INFO BANNER ===== -->
+    <div id="banner" class="banner hidden"></div>
+
+    <!-- ===== STEP 1: SHOW SELECTION ===== -->
+    <section id="shows" class="section">
+      <h2 class="section-title">🎬 Now Showing</h2>
+      <div id="show-list" class="show-grid"><!-- shows injected by JS --></div>
+    </section>
+
+    <!-- ===== STEP 2: SHOWTIME + SEATS ===== -->
+    <section id="booking" class="section hidden">
+      <div class="booking-header">
+        <div>
+          <h2 id="booking-show-title" class="section-title">Booking</h2>
+          <p id="booking-show-meta" class="muted"></p>
+        </div>
+        <button id="back-to-shows" class="btn btn-ghost">&larr; Back to Shows</button>
+      </div>
+
+      <!-- Showtimes -->
+      <div class="showtimes-row">
+        <span class="label">Showtimes:</span>
+        <div id="showtime-list" class="showtime-buttons"></div>
+      </div>
+
+      <div class="booking-layout">
+        <!-- Seat Map -->
+        <div class="seat-panel">
+          <div class="screen">SCREEN</div>
+          <div id="seat-map" class="seat-map"></div>
+
+          <div class="seat-legend">
+            <span><i class="seat-sample available"></i> Available</span>
+            <span><i class="seat-sample selected"></i> Selected</span>
+            <span><i class="seat-sample occupied"></i> Taken</span>
+            <span><i class="seat-sample vip"></i> VIP (₹400)</span>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <aside class="summary-panel">
+          <h3>Your Booking</h3>
+          <div id="summary-info" class="summary-info">
+            <p class="muted">Select a show and showtime to begin.</p>
+          </div>
+          <div id="selected-seats" class="selected-seats">
+            <p class="muted">No seats selected yet.</p>
+          </div>
+          <div class="summary-total">
+            <span>Total</span>
+            <span id="total-price">₹0</span>
+          </div>
+          <button id="proceed-btn" class="btn btn-primary" disabled>Proceed to Booking</button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== STEP 3: CHECKOUT / CONFIRMATION ===== -->
+    <section id="checkout" class="section hidden">
+      <div class="checkout-card">
+        <h2 class="section-title">🎟️ Confirm Your Booking</h2>
+        <div id="checkout-summary" class="checkout-summary"></div>
+
+        <form id="booking-form" class="booking-form" novalidate>
+          <div class="form-row">
+            <label for="cust-name">Full Name *</label>
+            <input type="text" id="cust-name" placeholder="e.g. John Doe" required />
+            <small class="error-msg" data-for="cust-name"></small>
+          </div>
+          <div class="form-row">
+            <label for="cust-email">Email *</label>
+            <input type="email" id="cust-email" placeholder="e.g. john@example.com" required />
+            <small class="error-msg" data-for="cust-email"></small>
+          </div>
+          <div class="form-row">
+            <label for="cust-phone">Phone *</label>
+            <input type="tel" id="cust-phone" placeholder="e.g. 9876543210" required />
+            <small class="error-msg" data-for="cust-phone"></small>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Confirm & Pay</button>
+        </form>
+
+        <button id="back-to-seats" class="btn btn-ghost">&larr; Back to Seats</button>
+      </div>
+    </section>
+
+    <!-- ===== STEP 4: CONFIRMATION PAGE ===== -->
+    <section id="confirmation" class="section hidden">
+      <div class="confirmation-card">
+        <div class="ticket-icon">🎉</div>
+        <h2>Booking Confirmed!</h2>
+        <p class="muted">Your e-ticket has been generated. Show this ticket at the entrance.</p>
+        <div id="ticket" class="ticket"></div>
+        <button id="new-booking-btn" class="btn btn-primary">Make Another Booking</button>
+      </div>
+    </section>
+
+    <!-- ===== MY BOOKINGS ===== -->
+    <section id="bookings" class="section hidden">
+      <h2 class="section-title">📋 My Bookings</h2>
+      <div id="booking-list" class="booking-list"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Grand Theatre. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
