@@ -83,15 +83,6 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// ===== Cursor Glow =====
-const cursorGlow = document.getElementById('cursor-glow');
-document.addEventListener('mousemove', (e) => {
-  if (cursorGlow && window.matchMedia('(pointer: fine)').matches) {
-    cursorGlow.style.left = e.clientX + 'px';
-    cursorGlow.style.top = e.clientY + 'px';
-  }
-});
-
 // ===== Scroll Reveal =====
 const revealElements = document.querySelectorAll('.reveal');
 
